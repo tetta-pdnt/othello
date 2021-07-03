@@ -34,7 +34,7 @@ class App():
         self.pri()
         passtime = 0
         while len(Counter([point for row in self.stones for point in row])) == 3:
-            self.turn = turn%2+1
+            self.turn = turn%2 + 1
             bw = "Black" if self.turn == 1 else "White"
             if self.passing():
                 flag = not player and self.turn-1 # CPUのターンのみTrue
@@ -90,7 +90,7 @@ class App():
             else:
                 if not any(self.spider(inp)):
                     con = False
-        except:
+        except IndexError:
             con = False
         return con
 
@@ -118,7 +118,7 @@ class App():
             flag = 0
             for i in che[1:]:
                 t = self.stones[i[0]][i[1]]
-                if t == self.turn and flag == True:
+                if t == self.turn and flag is True:
                     self.over[n] = True
                 elif t == 3-self.turn:
                     flag = True
